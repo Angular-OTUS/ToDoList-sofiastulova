@@ -1,0 +1,19 @@
+<div class="list__item"
+     [class.selected]="isSelected"
+     (click)="onSelectedClick(todo.id)">
+  <div class="info"
+       appTooltip
+       [tooltip]="'Your Task'">
+    <p class="item__text">
+      {{todo.id}}. {{todo.title}}
+    </p>
+    <p class="item__description">
+      <small *ngIf="isSelected">{{ todo.text }}</small>
+    </p>
+  </div>
+  <button class="item__btn" (click)="onItemDelete(todo.id)"
+          appTooltip
+          [tooltip]="'Delete Task'">
+    <img src="assets/img/delete.svg" alt="delete">
+  </button>
+</div>
