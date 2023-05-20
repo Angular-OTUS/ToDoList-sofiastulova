@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TaskList} from "../../interfaces/taskList";
+import {TaskList} from '../../interfaces/taskList';
 
 @Component({
   selector: 'app-to-do-list',
@@ -11,6 +11,7 @@ export class ToDoListComponent implements OnInit {
   textTask: string | undefined;
   items: TaskList[] = [];
   isLoading: boolean = true;
+  selectedItemId: number | undefined;
 
   ngOnInit() {
     setTimeout(() => {

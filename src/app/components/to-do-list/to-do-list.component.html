@@ -6,7 +6,7 @@
       </h1>
       <ul class="list">
         <li *ngFor="let item of items">
-          <app-to-do-item [todo]="item" (removeItem)="deleteTask($event)">
+          <app-to-do-item [todo]="item" (removeItem)="deleteTask($event)" [isSelected]="item.id === selectedItemId" (click)="selectedItemId = item.id">
           </app-to-do-item>
         </li>
       </ul>

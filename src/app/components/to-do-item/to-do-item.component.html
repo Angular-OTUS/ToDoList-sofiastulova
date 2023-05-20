@@ -1,9 +1,8 @@
 <div class="list__item"
-     [class.selected]="isSelected"
-     (click)="onSelectedClick(todo.id)">
+     [class.selected]="isSelected">
   <div class="info"
        appTooltip
-       [tooltip]="'Your Task'">
+       tooltip="Your Task">
     <p class="item__text">
       {{todo.id}}. {{todo.title}}
     </p>
@@ -13,7 +12,7 @@
   </div>
   <button class="item__btn" (click)="onItemDelete(todo.id)"
           appTooltip
-          [tooltip]="'Delete Task'">
+          tooltip="Delete Task">
     <img src="assets/img/delete.svg" alt="delete">
   </button>
 </div>
