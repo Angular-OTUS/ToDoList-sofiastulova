@@ -1,35 +1,35 @@
 <div class="container">
-  <h1 class="title">
-    ToDo List
-  </h1>
-  <ul class="list">
-    <li class="list__item">
-      <p class="item__text">
-        Buy Iphone
-      </p>
-      <button class="item__btn">
-        <img src="assets/img/delete.svg" alt="">
-      </button>
-    </li>
-    <li class="list__item">
-      <p class="item__text">
-        Watch TV
-      </p>
-      <button class="item__btn">
-        <img src="assets/img/delete.svg" alt="">
-      </button>
-    </li>
-    <li class="list__item">
-      <p class="item__text">
-        Sleep 8 hours
-      </p>
-      <button class="item__btn">
-        <img src="assets/img/delete.svg" alt="">
-      </button>
-    </li>
-  </ul>
-  <div class="add">
-    <input type="text" class="add__input" placeholder="Add your new todo">
-    <button class="add__btn">Add Task</button>
+  <div class="column" *ngIf="!isLoading">
+    <div class="inner">
+      <h1 class="title">
+        ToDo List
+      </h1>
+      <ul class="list">
+        <li *ngFor="let item of items">
+          <app-to-do-item [todo]="item" (removeItem)="deleteTask($event)" [isSelected]="item.id === selectedItemId" (click)="selectedItemId = item.id">
+          </app-to-do-item>
+        </li>
+      </ul>
+      <div class="add">
+        <div class="">
+          <mat-form-field class="example-full-width" style="width: 100%;">
+            <input type="text" matInput class="add__input" placeholder="Add your new todo" [(ngModel)]="titleTask">
+          </mat-form-field>
+          <textarea type="text" matInput class="add__input" placeholder="description" [(ngModel)]="textTask"
+                    style="max-width: 410px; min-width: 410px">
+          </textarea>
+        </div>
+        <app-button [title]="'Add Task'"
+                    (click)="addTask()"
+                    [disabled]="!titleTask"
+                    [type]="'add'"
+                    appTooltip
+                    [tooltip]="'Add Task'">
+        </app-button>
+      </div>
+    </div>
+  </div>
+  <div class="spinning" *ngIf="isLoading">
+    <img src="assets/img/spinning.gif" alt="">
   </div>
 </div>
