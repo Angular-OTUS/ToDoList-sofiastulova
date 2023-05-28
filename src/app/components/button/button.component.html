@@ -1,1 +1,3 @@
-<button [disabled]="disabled" [ngClass]="{'add__btn': type =='add'}">{{title}}</button>
+<button [disabled]="disabled" [class.btn--add]="type == 'add'">
+  <ng-content></ng-content>
+</button>

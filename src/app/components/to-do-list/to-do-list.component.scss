@@ -45,3 +45,22 @@ li {
     color: white;
   }
 }
+
+.status {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+
+  button {
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    padding: 10px 20px;
+    background-color: #FC6464;
+    border-radius: 5px;
+  }
+}

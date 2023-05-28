@@ -3,4 +3,5 @@ export interface TaskList {
   title: string,
   text?: string,
   clicked: boolean,
+  status: string,
 }

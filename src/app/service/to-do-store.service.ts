@@ -1,49 +1,65 @@
 import {Injectable} from '@angular/core';
 import {TaskList} from "../interfaces/taskList";
 import {ToastService} from "./toast.service";
+import {ApiService} from "./api.service";
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ToDoStoreService {
   items: TaskList[] = [];
 
-  constructor(public toastService: ToastService) {
-    this.items.push(
-      {
-        id: 1,
-        title: 'Task 1',
-        text: 'Description 1',
-        clicked: false,
-      },
-      {
-        id: 2,
-        title: 'Task 2',
-        text: 'Description 2',
-        clicked: false,
-      },
-      {
-        id: 3,
-        title: 'Task 3',
-        text: 'Description 3',
-        clicked: false,
-      },
-      {
-        id: 4,
-        title: 'Task 4',
-        text: 'Description 4',
-        clicked: false,
-      }
-    );
+  getAllItems() {
+    this.api.getItems().subscribe((data => {
+      this.items = data as TaskList[];
+    }));
   }
 
-  addTask(title: string, text?: string) {
-    this.items.push({id: this.items.length + 1, title: `${title}`, text: `${text}`, clicked: false});
+  constructor(public toastService: ToastService, public api: ApiService) {
+    this.getAllItems();
+  }
+
+  addTask(task: TaskList) {
+    this.api.postItems(task).subscribe((data => {
+      task.id = data.id;
+      this.items.push(data);
+    }));
     this.toastService.showToast('Task added');
   }
 
   deleteTask(id: number) {
-    this.items = this.items.filter(todo => todo.id !== id);
+    this.api.deleteItems(id)
+      .subscribe({
+        next: () => {
+          this.getAllItems()
+        }
+      })
     this.toastService.showToast('Task deleted');
+  }
+
+  changeStatus(id: number, status: string) {
+    if (status === 'In Progress') {
+      status = 'Completed';
+    } else {
+      status = 'In Progress';
+    }
+    this.api.changeStatus(id, status).subscribe((data => {
+      data.status = status;
+    }));
+    this.toastService.showToast('Task status changed');
+  }
+
+  filterByStatus(status: string) {
+    if (status === 'All') {
+      this.api.getItems().subscribe((data => {
+        this.items = data as TaskList[];
+      }));
+    } else {
+      this.api.getItems().subscribe((data => {
+        this.items = data as TaskList[];
+        this.items = this.items.filter(item => item.status === status);
+      }));
+    }
   }
 }

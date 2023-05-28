@@ -2,6 +2,7 @@ import {Component, EventEmitter, Injectable, Input, Output} from '@angular/core'
 import {TaskList} from 'src/app/interfaces/taskList';
 import {ToDoStoreService} from "../../service/to-do-store.service";
 import {ToastService} from "../../service/toast.service";
+import {ApiService} from "../../service/api.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,13 @@ import {ToastService} from "../../service/toast.service";
   styleUrls: ['./to-do-item.component.scss']
 })
 export class ToDoItemComponent {
-  @Input()
-  todo!: TaskList;
+  @Input() todo!: TaskList;
 
   @Output()
   private removeItem = new EventEmitter<number>();
 
 
-  constructor(public toDoStoreService: ToDoStoreService, public toastService: ToastService) {
+  constructor(public toDoStoreService: ToDoStoreService, public toastService: ToastService,public api: ApiService) {
   }
 
   public test: boolean = true;
@@ -31,11 +31,9 @@ export class ToDoItemComponent {
 
   titleChange(title: string) {
     this.test = true;
-    this.toDoStoreService.items.map((item) => {
-      if (item.id === this.todo.id) {
-        item.title = title;
-      }
-    });
+    this.api.putItems(title, this.todo.id).subscribe((data => {
+      this.todo.title = data.title;
+    }));
     this.toastService.showToast('Task title changed');
   }
 }

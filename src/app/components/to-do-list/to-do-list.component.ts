@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-import {ToDoStoreService} from "../../service/to-do-store.service";
-import {ToDoItemComponent} from "../to-do-item/to-do-item.component";
+import {ToDoStoreService} from '../../service/to-do-store.service';
 
 @Component({
   selector: 'app-to-do-list',
@@ -8,16 +7,19 @@ import {ToDoItemComponent} from "../to-do-item/to-do-item.component";
   styleUrls: ['./to-do-list.component.scss']
 })
 export class ToDoListComponent {
-
+  status: string[] = ['All', 'In Progress', 'Completed'];
   public description: string = '';
 
-  constructor(public toDoStoreService: ToDoStoreService, public toDoItemComponent: ToDoItemComponent) {
+  constructor(public toDoStoreService: ToDoStoreService) {
   }
-
 
   onItemClick(item: any) {
     this.toDoStoreService.items.forEach(i => i.clicked = false);
     item.clicked = true;
     this.description = item.text;
+  }
+
+  filterByStatus(status: string) {
+    this.toDoStoreService.filterByStatus(status);
   }
 }
