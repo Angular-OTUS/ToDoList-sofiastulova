@@ -1,0 +1,19 @@
+.add {
+  max-width: 500px;
+}
+
+.inner {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.add__input {
+  padding: 10px;
+  width: 100%;
+  border: 1px black solid;
+  border-radius: 5px;
+  height: 100%;
+  margin-bottom: 10px;
+}

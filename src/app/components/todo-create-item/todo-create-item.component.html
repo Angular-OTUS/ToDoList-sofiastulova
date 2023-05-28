@@ -1,0 +1,16 @@
+<div class="add">
+  <div class="inner">
+    <input type="text" matInput class="add__input" placeholder="Add your new todo" [(ngModel)]="titleTask">
+    <textarea type="text" matInput class="add__input" placeholder="description" [(ngModel)]="textTask"
+              style="max-width: 500px; min-width: 500px">
+          </textarea>
+    <app-button
+      (click)="addTask(); textTask = ''; titleTask=''"
+      [disabled]="!titleTask"
+      [type]="'add'"
+      appTooltip
+      [tooltip]="'Add Task'">
+      Add Task
+    </app-button>
+  </div>
+</div>
