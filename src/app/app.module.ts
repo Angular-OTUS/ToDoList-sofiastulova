@@ -11,6 +11,7 @@ import {TooltipComponent} from './components/tooltip/tooltip.component';
 import {TodoCreateItemComponent} from './components/todo-create-item/todo-create-item.component';
 import {ToastsComponent} from './components/toasts/toasts.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DetailsComponent } from './components/to-do-list/details/details.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     TooltipComponent,
     TodoCreateItemComponent,
     ToastsComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
