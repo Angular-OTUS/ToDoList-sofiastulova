@@ -28,4 +28,8 @@ export class ApiService {
   changeStatus(id: number, status: string) {
     return this.http.patch<any>('  http://localhost:3000/todo/' + id, {status: status});
   }
+
+  getTaskById(id: number) {
+      return this.http.get('http://localhost:3000/todo/' + id);
+  }
 }

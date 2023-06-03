@@ -62,4 +62,10 @@ export class ToDoStoreService {
       }));
     }
   }
+
+  getTaskById(id: number) {
+    this.api.getTaskById(id).subscribe((data => {
+      return data as TaskList;
+    }));
+  }
 }
