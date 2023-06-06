@@ -8,32 +8,11 @@
       "checked": false
     },
     {
-      "id": 3,
-      "title": "test",
-      "status": "Completed",
-      "text": "test",
-      "checked": false
-    },
-    {
-      "id": 4,
-      "title": "test",
-      "status": "Completed",
-      "text": "test",
-      "checked": false
-    },
-    {
-      "title": "dsfd",
-      "text": "dfsdfsdf",
+      "title": "Dz",
+      "text": "add button",
       "status": "Completed",
       "clicked": false,
-      "id": 5
-    },
-    {
-      "title": "ва",
-      "text": "ва",
-      "status": "Completed",
-      "clicked": false,
-      "id": 6
+      "id": 3
     }
   ]
 }

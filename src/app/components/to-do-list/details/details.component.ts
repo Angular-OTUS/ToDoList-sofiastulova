@@ -27,9 +27,13 @@ export class DetailsComponent {
 //  получение задачи по id
   getTaskById(id: number) {
     this.toDoStoreService.getTaskById(id);
-    this.task = this.toDoStoreService.items[id];
-    if (this.task !== undefined) {
-      this.text = this.task.text;
-    }
+    this.task = this.toDoStoreService.currentItems;
+    this.task = Array.from(this.task);
+    this.task = this.task.filter((item: any) => {
+     return  item.id === id ? item : false;
+    })
+    this.task.forEach((item: any) => {
+      this.text = item.text;
+    })
   }
 }

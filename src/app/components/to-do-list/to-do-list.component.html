@@ -9,9 +9,8 @@
           <button (click)="filterByStatus(item)">{{item}}</button>
         </div>
       </div>
-      <ul class="list" *ngIf="toDoStoreService.items !== []">
-        <li *ngFor="let item of toDoStoreService.items" (click)="onItemClick(item)"
-            [ngStyle]="{'background-color': item.clicked ? 'red' : ''}">
+      <ul class="list">
+        <li *ngFor="let item of tasks" (click)="onItemClick(item)">
           <app-to-do-item [todo]="item" (removeItem)="toDoStoreService.deleteTask(item.id)">
           </app-to-do-item>
         </li>

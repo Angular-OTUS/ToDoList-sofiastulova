@@ -14,7 +14,7 @@ export class TodoCreateItemComponent {
   }
 
   addTask() {
-    if (this.titleTask && this.textTask) {
+    if (this.titleTask) {
       let task = {
         title: this.titleTask,
         text: this.textTask,

@@ -2,17 +2,28 @@ import {Injectable} from '@angular/core';
 import {TaskList} from "../interfaces/taskList";
 import {ToastService} from "./toast.service";
 import {ApiService} from "./api.service";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ToDoStoreService {
-  items: TaskList[] = [];
+  private items = new BehaviorSubject<TaskList>({} as TaskList);
+
+  items$ = this.items.asObservable();
+
+  get currentItems(): any {
+    return this.items.value;
+  }
+
+  set currentItems(value: TaskList) {
+    this.items.next(value);
+  }
 
   getAllItems() {
     this.api.getItems().subscribe((data => {
-      this.items = data as TaskList[];
+      this.items.next(<TaskList>data);
     }));
   }
 
@@ -23,7 +34,8 @@ export class ToDoStoreService {
   addTask(task: TaskList) {
     this.api.postItems(task).subscribe((data => {
       task.id = data.id;
-      this.items.push(data);
+      this.currentItems.push(task);
+      this.getAllItems();
     }));
     this.toastService.showToast('Task added');
   }
@@ -53,19 +65,17 @@ export class ToDoStoreService {
   filterByStatus(status: string) {
     if (status === 'All') {
       this.api.getItems().subscribe((data => {
-        this.items = data as TaskList[];
+        this.items.next(<TaskList>data);
       }));
     } else {
       this.api.getItems().subscribe((data => {
-        this.items = data as TaskList[];
-        this.items = this.items.filter(item => item.status === status);
+        this.items.next(<TaskList>data);
+        this.items.next(this.currentItems.filter((item: any) => item.status === status));
       }));
     }
   }
 
-  getTaskById(id: number) {
-    this.api.getTaskById(id).subscribe((data => {
-      return data as TaskList;
-    }));
+  getTaskById(id?: number) {
+    return this.api.getTaskById(id ? id : 1);
   }
 }
