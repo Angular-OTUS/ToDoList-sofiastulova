@@ -1,1 +1,7 @@
-<app-to-do-list></app-to-do-list>
+<app-loading *ngIf="isLoading; else loaded"></app-loading>
+
+<ng-template #loaded>
+  <app-sidebar></app-sidebar>
+  <router-outlet></router-outlet>
+  <app-toasts></app-toasts>
+</ng-template>

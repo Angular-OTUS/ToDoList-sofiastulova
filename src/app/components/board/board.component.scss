@@ -1,0 +1,43 @@
+:host {
+}
+
+.inner {
+  margin-left: 275px;
+  margin-top: 30px;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.item::ng-deep {
+  .list__item {
+    height: 60px;
+    display: block;
+  }
+
+  .item__btn {
+    display: none;
+  }
+
+  .checkbox {
+    display: none;
+  }
+}
+
+.status__item {
+  width: 100%;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}

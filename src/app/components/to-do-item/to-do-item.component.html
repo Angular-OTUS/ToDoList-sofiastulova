@@ -1,0 +1,22 @@
+<div class="list__item">
+  <div class="info"
+       appTooltip
+       tooltip="Your Task">
+    <input type="checkbox" class="checkbox" (click)="toDoStoreService.changeStatus(todo.id, todo.status)"
+           [checked]="todo.status == 'Completed'">
+    <p class="item__text">
+     <input [readonly]="test ? 'readonly' : null" (dblclick)="test = false" value="{{todo.title}}">
+    </p>
+    <app-button
+      *ngIf="!test"
+      [type]="'add'"
+      (click)='titleChange(todo.id, todo.title)'>
+      Save Task
+    </app-button>
+  </div>
+  <button class="item__btn" (click)="onItemDelete(todo.id)"
+          appTooltip
+          tooltip="Delete Task">
+    <img src="assets/img/delete.svg" alt="delete">
+  </button>
+</div>
