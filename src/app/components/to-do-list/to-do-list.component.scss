@@ -2,7 +2,8 @@
 
 .container {
   display: flex;
-  margin: 20px;
+  margin-left: 230px;
+  padding: 20px;
 }
 
 .column {
@@ -37,7 +38,7 @@ li {
 .description {
   width: 100%;
   min-height: 100%;
-  background-color: #3b3837;
+  background-color: #343434;
   border-radius: 5px;
   padding: 20px;
 }
@@ -56,7 +57,7 @@ li {
     font-size: 20px;
     color: white;
     padding: 10px 20px;
-    background-color: #FC6464;
+    background-color: #343434;
     border-radius: 5px;
   }
 }

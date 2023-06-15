@@ -1,0 +1,26 @@
+<app-header [title]="'Board'"></app-header>
+<div class="inner">
+  <div class="status__item">
+    <p class="title">All</p>
+    <li *ngFor="let item of tasks">
+      <app-to-do-item [todo]="item" class="item">
+      </app-to-do-item>
+    </li>
+  </div>
+  <div class="status__item">
+    <p class="title">In Progress</p>
+    <div class="" *ngFor="let item of tasks">
+      <li *ngIf="item.status === 'In Progress'">
+        <app-to-do-item [todo]="item" class="item">
+        </app-to-do-item>
+      </li>
+    </div>
+  </div>
+  <div class="status__item">
+    <p class="title">Completed</p>
+    <li *ngFor="let item of tasks">
+      <app-to-do-item [todo]="item" class="item" *ngIf="item.status === 'Completed'">
+      </app-to-do-item>
+    </li>
+  </div>
+</div>

@@ -1,3 +1,7 @@
-<app-loading *ngIf="isLoading"></app-loading>
-<router-outlet *ngIf="!isLoading"></router-outlet>
-<app-toasts></app-toasts>
+<app-loading *ngIf="isLoading; else loaded"></app-loading>
+
+<ng-template #loaded>
+  <app-sidebar></app-sidebar>
+  <router-outlet></router-outlet>
+  <app-toasts></app-toasts>
+</ng-template>

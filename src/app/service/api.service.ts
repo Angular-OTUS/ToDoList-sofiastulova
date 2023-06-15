@@ -17,8 +17,8 @@ export class ApiService {
     return this.http.post<any>('  http://localhost:3000/todo', data);
   }
 
-  putItems(data: any, id: number) {
-    return this.http.put<any>('  http://localhost:3000/todo/' + id, data);
+  putItems(id: number, title: string) {
+    return this.http.patch<any>('  http://localhost:3000/todo/' + id, {title: title});
   }
 
   deleteItems(id: number) {

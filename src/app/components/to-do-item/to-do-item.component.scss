@@ -1,3 +1,7 @@
+:host {
+  max-width: 440px;
+}
+
 .list {
   &__item {
     display: flex;
@@ -5,7 +9,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    background-color: #DFDFDF;
+    background-color: #343434;
     padding: 10px;
     border-radius: 5px;
   }
@@ -15,17 +19,17 @@
   &__text {
     font-weight: 600;
     font-size: 19px;
-    color: #343434;
     white-space: nowrap;
     text-overflow: ellipsis;
     display: block;
     overflow: hidden;
-    max-width: 300px;
+    color: white;
 
     input {
       background-color: transparent;
       font-size: 20px;
-      width: 200px;
+      width: 170px;
+      color: white;
     }
   }
 
@@ -37,8 +41,6 @@
     img {
       width: 40px;
       height: 40px;
-      border-radius: 139px;
-      background-color: #fff;
       padding: 5px;
     }
   }

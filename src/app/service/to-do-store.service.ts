@@ -78,4 +78,11 @@ export class ToDoStoreService {
   getTaskById(id?: number) {
     return this.api.getTaskById(id ? id : 1);
   }
+
+  getTasksByStatus(status: string) {
+    this.api.getItems().subscribe((data => {
+      this.items.next(<TaskList>data);
+      this.items.next(this.currentItems.filter((item: any) => item.status === status));
+    }));
+  }
 }

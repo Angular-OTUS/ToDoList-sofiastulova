@@ -29,10 +29,11 @@ export class ToDoItemComponent {
     this.removeItem.emit(id);
   }
 
-  titleChange(title: string) {
+  titleChange(id: any, title: string) {
     this.test = true;
-    this.api.putItems(title, this.todo.id).subscribe((data => {
-      this.todo.title = data.title;
+    this.api.putItems(this.todo.id, title).subscribe((data => {
+      console.log(data)
+      this.todo.title = title;
     }));
     this.toastService.showToast('Task title changed');
   }

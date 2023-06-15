@@ -1,9 +1,7 @@
+<app-header [title]="'Backlog'"></app-header>
 <div class="container">
   <div class="column">
     <div class="inner">
-      <h1 class="title">
-        ToDo List
-      </h1>
       <div class="status">
         <div class="status__inner" *ngFor="let item of status">
           <button (click)="filterByStatus(item)">{{item}}</button>

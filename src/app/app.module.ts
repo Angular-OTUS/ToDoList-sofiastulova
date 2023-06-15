@@ -12,6 +12,9 @@ import {TodoCreateItemComponent} from './components/todo-create-item/todo-create
 import {ToastsComponent} from './components/toasts/toasts.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DetailsComponent } from './components/to-do-list/details/details.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { BoardComponent } from './components/board/board.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { DetailsComponent } from './components/to-do-list/details/details.compon
     TodoCreateItemComponent,
     ToastsComponent,
     DetailsComponent,
+    SidebarComponent,
+    BoardComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

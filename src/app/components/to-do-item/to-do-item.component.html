@@ -5,12 +5,12 @@
     <input type="checkbox" class="checkbox" (click)="toDoStoreService.changeStatus(todo.id, todo.status)"
            [checked]="todo.status == 'Completed'">
     <p class="item__text">
-      {{todo.id}}. <input [readonly]="test ? 'readonly' : null" (dblclick)="test = false" value="{{todo.title}}">
+     <input [readonly]="test ? 'readonly' : null" (dblclick)="test = false" value="{{todo.title}}">
     </p>
     <app-button
       *ngIf="!test"
       [type]="'add'"
-      (click)='titleChange(todo.title)'>
+      (click)='titleChange(todo.id, todo.title)'>
       Save Task
     </app-button>
   </div>
